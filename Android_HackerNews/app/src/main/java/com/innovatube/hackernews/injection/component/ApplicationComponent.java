@@ -13,10 +13,6 @@ import javax.inject.Singleton;
 import dagger.Component;
 import retrofit2.Retrofit;
 
-/**
- * Created by TOIDV on 4/4/2016.
- */
-
 @Singleton
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {

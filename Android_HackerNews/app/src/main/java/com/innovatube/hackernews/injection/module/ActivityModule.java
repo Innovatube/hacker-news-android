@@ -8,10 +8,6 @@ import com.innovatube.hackernews.injection.ActivityContext;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by TOIDV on 4/4/2016.
- */
-
 @Module
 public class ActivityModule {
 

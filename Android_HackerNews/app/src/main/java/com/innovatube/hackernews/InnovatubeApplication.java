@@ -7,10 +7,6 @@ import com.innovatube.hackernews.injection.component.ApplicationComponent;
 import com.innovatube.hackernews.injection.component.DaggerApplicationComponent;
 import com.innovatube.hackernews.injection.module.ApplicationModule;
 
-
-/**
- * Created by TOIDV on 4/4/2016.
- */
 public class InnovatubeApplication extends Application {
     private ApplicationComponent mApplicationComponent;
 

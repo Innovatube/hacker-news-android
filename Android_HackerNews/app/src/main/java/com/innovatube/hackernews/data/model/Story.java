@@ -1,8 +1,5 @@
 package com.innovatube.hackernews.data.model;
 
-/**
- * Created by Thanh on 05/09/2016.
- */
 public class Story {
     private String by;
     private int descendants;

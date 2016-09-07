@@ -13,10 +13,6 @@ import dagger.Provides;
 
 import retrofit2.Retrofit;
 
-/**
- * Created by TOIDV on 4/4/2016.
- */
-
 @Module
 public class ApplicationModule {
     protected final Application mApplication;

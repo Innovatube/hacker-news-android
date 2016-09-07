@@ -6,9 +6,6 @@ import com.innovatube.hackernews.InnovatubeApplication;
 import com.innovatube.hackernews.injection.component.ActivityComponent;
 import com.innovatube.hackernews.injection.component.DaggerActivityComponent;
 
-/**
- * Created by Thanh on 05/09/2016.
- */
 public class BaseActivity extends AppCompatActivity {
     ActivityComponent activityComponent;
 

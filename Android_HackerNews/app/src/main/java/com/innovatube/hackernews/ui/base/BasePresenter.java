@@ -1,8 +1,5 @@
 package com.innovatube.hackernews.ui.base;
 
-/**
- * Created by Thanh on 05/09/2016.
- */
 public class BasePresenter<V extends BaseViewInterface> implements BasePresenterInterface<V> {
 
     private V viewInterface;
