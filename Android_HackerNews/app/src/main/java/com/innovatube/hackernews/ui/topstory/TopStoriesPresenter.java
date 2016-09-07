@@ -4,10 +4,7 @@ import android.util.Log;
 
 import com.innovatube.hackernews.data.DataManager;
 import com.innovatube.hackernews.data.model.Story;
-import com.innovatube.hackernews.data.model.StoryId;
 import com.innovatube.hackernews.ui.base.BasePresenter;
-
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -17,9 +14,6 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-/**
- * Created by Thanh on 05/09/2016.
- */
 public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> {
     private DataManager dataManager;
     private Retrofit retrofit;
@@ -56,8 +50,12 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
 
                     @Override
                     public void onNext(Story story) {
-                        Log.e("onNext", story.getTitle());
+                        getViewInterface().addStoryItemToAdapter(story);
                     }
                 });
+    }
+
+    public void saveStoryUserChoose(Story story) {
+        Log.e("saveStoryUserChoose", "vao");
     }
 }
