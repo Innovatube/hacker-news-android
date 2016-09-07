@@ -1,7 +1,7 @@
 package com.innovatube.hackernews.data;
 
+import com.innovatube.hackernews.data.local.PreferenceHelper;
 import com.innovatube.hackernews.data.model.Story;
-import com.innovatube.hackernews.data.model.StoryId;
 import com.innovatube.hackernews.data.remote.InnovatubeService;
 
 import java.util.List;
@@ -12,16 +12,15 @@ import javax.inject.Singleton;
 import rx.Observable;
 import rx.functions.Func1;
 
-/**
- * Created by Thanh on 05/09/2016.
- */
 @Singleton
 public class DataManager {
     private final InnovatubeService service;
+    private final PreferenceHelper preferenceHelper;
 
     @Inject
-    public DataManager(InnovatubeService service) {
+    public DataManager(InnovatubeService service, PreferenceHelper preferenceHelper) {
         this.service = service;
+        this.preferenceHelper = preferenceHelper;
     }
 
     public Observable<Story> getStoryId() {
@@ -47,5 +46,13 @@ public class DataManager {
                         return story.getTitle() != null ? Observable.just(story) : Observable.<Story>empty();
                     }
                 });
+    }
+
+    public Story getStory() {
+        return preferenceHelper.getStory();
+    }
+
+    public void setStory(Story story) {
+        preferenceHelper.setStory(story);
     }
 }

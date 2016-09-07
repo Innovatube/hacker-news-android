@@ -16,15 +16,12 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
 
-/**
- * Created by Thanh on 05/09/2016.
- */
 public interface InnovatubeService {
     @GET("topstories.json")
     Observable<List<Long>> getTopStoryId();
 
 
-    @GET("/item/{itemId}.json")
+    @GET("item/{itemId}.json")
     Observable<Story> getStoryItem(@Path("itemId") String itemId);
 
     class Creator {
