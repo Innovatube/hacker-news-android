@@ -54,8 +54,4 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
                     }
                 });
     }
-
-    public void saveStoryUserChoose(Story story) {
-        Log.e("saveStoryUserChoose", "vao");
-    }
 }
