@@ -2,7 +2,6 @@ package com.innovatube.hackernews.ui.topstory;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,18 +9,16 @@ import android.widget.TextView;
 
 import com.innovatube.hackernews.R;
 import com.innovatube.hackernews.data.model.Story;
+import com.innovatube.hackernews.eventbus.RxEventBus;
+import com.innovatube.hackernews.eventbus.event.ItemClickEvent;
 
 import java.util.ArrayList;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryHolder> {
 
-    @Inject
-    TopStoriesPresenter presenter;
     private ArrayList<Story> storyList = new ArrayList<>();
 
     @Override
@@ -31,18 +28,14 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryHolder>
     }
 
     @Override
-    public void onBindViewHolder(StoryHolder holder, int position) {
+    public void onBindViewHolder(StoryHolder holder, final int position) {
         final Story story = storyList.get(position);
         holder.title.setText(story.getTitle());
         holder.dateTime.setText(String.valueOf(story.getTime()));
         holder.storyItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (presenter != null) {
-                    presenter.saveStoryUserChoose(story);
-                } else {
-                    Log.e("presenter", "null");
-                }
+                RxEventBus.getInstance().post(new ItemClickEvent(position));
             }
         });
     }
@@ -50,6 +43,10 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryHolder>
     @Override
     public int getItemCount() {
         return storyList.size();
+    }
+
+    public ArrayList<Story> getStoryList() {
+        return storyList;
     }
 
     public class StoryHolder extends RecyclerView.ViewHolder {
