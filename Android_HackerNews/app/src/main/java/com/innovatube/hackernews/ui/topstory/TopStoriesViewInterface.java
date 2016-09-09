@@ -5,4 +5,6 @@ import com.innovatube.hackernews.ui.base.BaseViewInterface;
 
 public interface TopStoriesViewInterface extends BaseViewInterface {
     void addStoryItemToAdapter(Story story);
+
+    void hideLoadingViews();
 }

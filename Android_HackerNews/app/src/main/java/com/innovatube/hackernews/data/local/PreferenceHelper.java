@@ -1,7 +1,5 @@
 package com.innovatube.hackernews.data.local;
 
-import com.innovatube.hackernews.data.model.Story;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -10,17 +8,17 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class PreferenceHelper {
-    private Story story;
+    private String url;
 
     @Inject
     public PreferenceHelper() {
     }
 
-    public Story getStory() {
-        return story;
+    public String getUrl() {
+        return url;
     }
 
-    public void setStory(Story story) {
-        this.story = story;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

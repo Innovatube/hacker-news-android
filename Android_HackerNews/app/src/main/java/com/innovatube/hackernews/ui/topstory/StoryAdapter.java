@@ -49,6 +49,10 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryHolder>
         return storyList;
     }
 
+    public void setItems(ArrayList<Story> stories) {
+        storyList = stories;
+    }
+
     public class StoryHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tvTitle)
         TextView title;
