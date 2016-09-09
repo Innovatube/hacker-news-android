@@ -23,8 +23,18 @@ public class DataManager {
         this.preferenceHelper = preferenceHelper;
     }
 
-    public Observable<Story> getStoryId() {
+    public Observable<Story> getTopStoryId() {
         return service.getTopStoryId()
+                .concatMap(new Func1<List<Long>, Observable<? extends Story>>() {
+                    @Override
+                    public Observable<? extends Story> call(List<Long> longs) {
+                        return getPostsFromIds(longs);
+                    }
+                });
+    }
+
+    public Observable<Story> getNewStoryId() {
+        return service.getNewStoryId()
                 .concatMap(new Func1<List<Long>, Observable<? extends Story>>() {
                     @Override
                     public Observable<? extends Story> call(List<Long> longs) {
@@ -48,11 +58,11 @@ public class DataManager {
                 });
     }
 
-    public Story getStory() {
-        return preferenceHelper.getStory();
+    public void saveUrl(String url) {
+        preferenceHelper.setUrl(url);
     }
 
-    public void setStory(Story story) {
-        preferenceHelper.setStory(story);
+    public String getUrl() {
+        return preferenceHelper.getUrl();
     }
 }

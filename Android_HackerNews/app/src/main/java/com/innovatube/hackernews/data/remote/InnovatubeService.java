@@ -3,7 +3,6 @@ package com.innovatube.hackernews.data.remote;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.innovatube.hackernews.data.model.Story;
-import com.innovatube.hackernews.data.model.StoryId;
 
 import java.util.List;
 
@@ -20,6 +19,8 @@ public interface InnovatubeService {
     @GET("topstories.json")
     Observable<List<Long>> getTopStoryId();
 
+    @GET("newstories.json")
+    Observable<List<Long>> getNewStoryId();
 
     @GET("item/{itemId}.json")
     Observable<Story> getStoryItem(@Path("itemId") String itemId);

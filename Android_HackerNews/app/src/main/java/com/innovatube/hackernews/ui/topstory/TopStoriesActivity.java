@@ -19,6 +19,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -35,6 +36,8 @@ public class TopStoriesActivity extends BaseActivity implements TopStoriesViewIn
 
     @Inject
     TopStoriesPresenter presenter;
+
+    boolean clickTopStory = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,29 @@ public class TopStoriesActivity extends BaseActivity implements TopStoriesViewIn
     protected void onPause() {
         super.onPause();
         subscriber.unsubscribe();
+    }
+
+
+    @OnClick(R.id.btnTopStories)
+    public void OnButtonTopStoriesClick() {
+        if (clickTopStory) {
+            return;
+        } else {
+            clickTopStory = true;
+            adapter.setItems(new ArrayList<Story>());
+            presenter.getTopStoryId();
+        }
+    }
+
+    @OnClick(R.id.btnNewStories)
+    public void OnButtonNewStoriesClick() {
+        if (clickTopStory) {
+            clickTopStory = false;
+            adapter.setItems(new ArrayList<Story>());
+            presenter.getNewStoryId();
+        } else {
+            return;
+        }
     }
 
     @Override
@@ -140,7 +166,12 @@ public class TopStoriesActivity extends BaseActivity implements TopStoriesViewIn
     public void onRefresh() {
         if (adapter != null) {
             adapter.setItems(new ArrayList<Story>());
-            presenter.getTopStoryId();
+            if (clickTopStory) {
+                presenter.getTopStoryId();
+            } else {
+                presenter.getNewStoryId();
+            }
+
         }
     }
 
