@@ -17,17 +17,6 @@ public class InnovatubeApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
-//                .deleteRealmIfMigrationNeeded()
-//                .build();
-//        Realm.setDefaultConfiguration(realmConfiguration);
-//        Stetho.initialize(
-//                Stetho.newInitializerBuilder(this)
-//                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-//                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
-//                        .build());
-
-
     }
 
     @Override

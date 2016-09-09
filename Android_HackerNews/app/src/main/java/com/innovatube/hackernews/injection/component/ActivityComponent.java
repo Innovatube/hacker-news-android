@@ -2,6 +2,7 @@ package com.innovatube.hackernews.injection.component;
 
 import com.innovatube.hackernews.injection.PerActivity;
 import com.innovatube.hackernews.injection.module.ActivityModule;
+import com.innovatube.hackernews.ui.storydetail.StoryDetailActivity;
 import com.innovatube.hackernews.ui.topstory.TopStoriesActivity;
 
 import dagger.Component;
@@ -12,4 +13,6 @@ import dagger.Component;
 
 public interface ActivityComponent {
     void inject(TopStoriesActivity activity);
+
+    void inject(StoryDetailActivity activity);
 }
