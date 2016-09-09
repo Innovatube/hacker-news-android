@@ -4,13 +4,13 @@ public class Story {
     private String by;
     private int descendants;
     private int score;
-    private float time;
+    private long time;
     private String title;
     private String type;
     private String url;
 
 
-    public Story(String by, int descendants, int score, float time, String title, String type, String url) {
+    public Story(String by, int descendants, int score, long time, String title, String type, String url) {
         this.by = by;
         this.descendants = descendants;
         this.score = score;
@@ -44,11 +44,11 @@ public class Story {
         this.score = score;
     }
 
-    public float getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(float time) {
+    public void setTime(long time) {
         this.time = time;
     }
 

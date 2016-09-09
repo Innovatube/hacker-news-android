@@ -12,7 +12,6 @@ import retrofit2.Retrofit;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> {
@@ -41,12 +40,11 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
                 .subscribe(new Subscriber<Story>() {
                     @Override
                     public void onCompleted() {
-                        Log.w("onCompleted", "");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        getViewInterface().hideLoadingViews();
+                        Log.e("getTopStoryId", e.getLocalizedMessage());
                     }
 
                     @Override
@@ -64,12 +62,11 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
                 .subscribe(new Subscriber<Story>() {
                     @Override
                     public void onCompleted() {
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        getViewInterface().hideLoadingViews();
+                        Log.e("getNewStoryId", e.getLocalizedMessage());
                     }
 
                     @Override
@@ -83,5 +80,4 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
     public void saveUrl(String url) {
         dataManager.saveUrl(url);
     }
-
 }

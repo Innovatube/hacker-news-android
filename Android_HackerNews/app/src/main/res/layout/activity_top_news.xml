@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".ui.topstory.TopStoriesActivity">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -15,7 +16,8 @@
             android:id="@+id/rvListTopStory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp">
+            android:paddingLeft="@dimen/list_story_padding"
+            android:paddingRight="@dimen/list_story_padding">
 
         </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
@@ -24,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/story_margin_bottom"
         android:layout_gravity="bottom"
+        android:background="@android:color/white"
         android:orientation="horizontal"
         android:weightSum="2">
 

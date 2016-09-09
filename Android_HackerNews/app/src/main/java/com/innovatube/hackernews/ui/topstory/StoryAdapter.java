@@ -1,10 +1,10 @@
 package com.innovatube.hackernews.ui.topstory;
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.innovatube.hackernews.R;
@@ -13,6 +13,7 @@ import com.innovatube.hackernews.eventbus.RxEventBus;
 import com.innovatube.hackernews.eventbus.event.ItemClickEvent;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +32,9 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryHolder>
     public void onBindViewHolder(StoryHolder holder, final int position) {
         final Story story = storyList.get(position);
         holder.title.setText(story.getTitle());
-        holder.dateTime.setText(String.valueOf(story.getTime()));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(story.getTime());
+        holder.dateTime.setText(calendar.get(Calendar.HOUR_OF_DAY) + " : " + calendar.get(Calendar.MINUTE));
         holder.storyItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +62,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryHolder>
         @BindView(R.id.tvDateTime)
         TextView dateTime;
         @BindView(R.id.story_item)
-        CardView storyItem;
+        LinearLayout storyItem;
 
         public StoryHolder(View v) {
             super(v);

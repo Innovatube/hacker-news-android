@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.innovatube.hackernews.R;
 import com.innovatube.hackernews.data.model.Story;
@@ -53,6 +54,7 @@ public class TopStoriesActivity extends BaseActivity implements TopStoriesViewIn
         adapter = new StoryAdapter();
         setupRecyclerView();
         presenter.getTopStoryId();
+        getSupportActionBar().setTitle(getResources().getString(R.string.top_stories));
     }
 
     private void setupRecyclerView() {
@@ -65,24 +67,19 @@ public class TopStoriesActivity extends BaseActivity implements TopStoriesViewIn
     @Override
     protected void onResume() {
         super.onResume();
+        Log.e("onResume", "onResume");
         RxEventBus.getInstance().toObserverable()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        subscriber.unsubscribe();
-    }
-
-
     @OnClick(R.id.btnTopStories)
     public void OnButtonTopStoriesClick() {
         if (clickTopStory) {
             return;
         } else {
+            getSupportActionBar().setTitle(getResources().getString(R.string.top_stories));
             clickTopStory = true;
             adapter.setItems(new ArrayList<Story>());
             presenter.getTopStoryId();
@@ -92,6 +89,7 @@ public class TopStoriesActivity extends BaseActivity implements TopStoriesViewIn
     @OnClick(R.id.btnNewStories)
     public void OnButtonNewStoriesClick() {
         if (clickTopStory) {
+            getSupportActionBar().setTitle(getResources().getString(R.string.new_stories));
             clickTopStory = false;
             adapter.setItems(new ArrayList<Story>());
             presenter.getNewStoryId();
@@ -131,6 +129,7 @@ public class TopStoriesActivity extends BaseActivity implements TopStoriesViewIn
             presenter.detachView();
         }
         dismissDialog();
+        subscriber.unsubscribe();
         super.onDestroy();
     }
 
