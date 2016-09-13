@@ -7,7 +7,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.innovatube.hackernews.R;
-import com.innovatube.hackernews.ui.base.BaseActivity;
+import com.innovatube.hackernews.ui.base.BaseActivityWithDialog;
 import com.innovatube.hackernews.ui.topstory.TopStoriesActivity;
 
 import javax.inject.Inject;
@@ -15,7 +15,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StoryDetailActivity extends BaseActivity implements StoryDetailViewInterface {
+public class StoryDetailActivity extends BaseActivityWithDialog implements StoryDetailViewInterface {
     @BindView(R.id.webview)
     WebView webView;
 
@@ -42,28 +42,10 @@ public class StoryDetailActivity extends BaseActivity implements StoryDetailView
     }
 
     @Override
-    public void createProgressDialog() {
-
-    }
-
-    @Override
-    public void createAlertDialog() {
-
-    }
-
-    @Override
-    public void showProgressDialog(boolean value) {
-
-    }
-
-    @Override
-    public void showAlertDialog(String errorMessage) {
-
-    }
-
-    @Override
-    public void dismissDialog() {
-
+    protected void setupDialogTitle() {
+        String title = getString(R.string.title_dialog);
+        alertDialog.setTitle(title);
+        progressDialog.setTitle(title);
     }
 
     @Override

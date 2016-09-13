@@ -34,6 +34,7 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
     }
 
     public void getTopStoryId() {
+        getViewInterface().showProgressDialog(true);
         dataManager.getTopStoryId()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -44,11 +45,12 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e("getTopStoryId", e.getLocalizedMessage());
+                        getViewInterface().showProgressDialog(false);
                     }
 
                     @Override
                     public void onNext(Story story) {
+                        getViewInterface().showProgressDialog(false);
                         getViewInterface().hideLoadingViews();
                         getViewInterface().addStoryItemToAdapter(story);
                     }
@@ -56,6 +58,7 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
     }
 
     public void getNewStoryId() {
+        getViewInterface().showProgressDialog(true);
         dataManager.getNewStoryId()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -66,11 +69,12 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e("getNewStoryId", e.getLocalizedMessage());
+                        getViewInterface().showProgressDialog(false);
                     }
 
                     @Override
                     public void onNext(Story story) {
+                        getViewInterface().showProgressDialog(false);
                         getViewInterface().hideLoadingViews();
                         getViewInterface().addStoryItemToAdapter(story);
                     }

@@ -15,7 +15,7 @@ public abstract class BaseActivityWithDialog extends BaseActivity implements Bas
         super.onCreate(savedInstanceState);
         createProgressDialog();
         createAlertDialog();
-        //setupDialogTitle();
+        setupDialogTitle();
     }
 
     @Override
@@ -54,7 +54,7 @@ public abstract class BaseActivityWithDialog extends BaseActivity implements Bas
         }
     }
 
-    //protected abstract void setupDialogTitle();
+    protected abstract void setupDialogTitle();
 
     @Override
     protected void onDestroy() {

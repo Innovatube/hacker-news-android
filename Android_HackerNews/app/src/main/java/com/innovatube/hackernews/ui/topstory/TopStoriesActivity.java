@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.innovatube.hackernews.R;
 import com.innovatube.hackernews.data.model.Story;
 import com.innovatube.hackernews.eventbus.RxEventBus;
 import com.innovatube.hackernews.eventbus.event.ItemClickEvent;
-import com.innovatube.hackernews.ui.base.BaseActivity;
 import com.innovatube.hackernews.ui.base.BaseActivityWithDialog;
 import com.innovatube.hackernews.ui.storydetail.StoryDetailActivity;
 
@@ -68,7 +66,6 @@ public class TopStoriesActivity extends BaseActivityWithDialog implements TopSto
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("onResume", "onResume");
         RxEventBus.getInstance().toObserverable()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -100,27 +97,10 @@ public class TopStoriesActivity extends BaseActivityWithDialog implements TopSto
     }
 
     @Override
-    public void createProgressDialog() {
-
-    }
-
-    @Override
-    public void createAlertDialog() {
-
-    }
-
-    @Override
-    public void showProgressDialog(boolean value) {
-
-    }
-
-    @Override
-    public void showAlertDialog(String errorMessage) {
-
-    }
-
-    @Override
-    public void dismissDialog() {
+    protected void setupDialogTitle() {
+        String title = getString(R.string.title_dialog);
+        progressDialog.setTitle(title);
+        alertDialog.setTitle(title);
 
     }
 
