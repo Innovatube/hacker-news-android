@@ -45,8 +45,10 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
                     @Override
                     public void onError(Throwable e) {
                         String error = HackerNewsUtils.getError(e, retrofit);
-                        getViewInterface().showProgressDialog(false);
-                        getViewInterface().showAlertDialog(error);
+                        if (getViewInterface() != null) {
+                            getViewInterface().showProgressDialog(false);
+                            getViewInterface().showAlertDialog(error);
+                        }
                     }
 
                     @Override
@@ -71,8 +73,10 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
                     @Override
                     public void onError(Throwable e) {
                         String error = HackerNewsUtils.getError(e, retrofit);
-                        getViewInterface().showProgressDialog(false);
-                        getViewInterface().showAlertDialog(error);
+                        if (getViewInterface() != null) {
+                            getViewInterface().showProgressDialog(false);
+                            getViewInterface().showAlertDialog(error);
+                        }
                     }
 
                     @Override
