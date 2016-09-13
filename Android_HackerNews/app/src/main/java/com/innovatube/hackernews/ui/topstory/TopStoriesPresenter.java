@@ -1,10 +1,9 @@
 package com.innovatube.hackernews.ui.topstory;
 
-import android.util.Log;
-
 import com.innovatube.hackernews.data.DataManager;
 import com.innovatube.hackernews.data.model.Story;
 import com.innovatube.hackernews.ui.base.BasePresenter;
+import com.innovatube.hackernews.utils.HackerNewsUtils;
 
 import javax.inject.Inject;
 
@@ -45,7 +44,9 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
 
                     @Override
                     public void onError(Throwable e) {
+                        String error = HackerNewsUtils.getError(e, retrofit);
                         getViewInterface().showProgressDialog(false);
+                        getViewInterface().showAlertDialog(error);
                     }
 
                     @Override
@@ -69,7 +70,9 @@ public class TopStoriesPresenter extends BasePresenter<TopStoriesViewInterface> 
 
                     @Override
                     public void onError(Throwable e) {
+                        String error = HackerNewsUtils.getError(e, retrofit);
                         getViewInterface().showProgressDialog(false);
+                        getViewInterface().showAlertDialog(error);
                     }
 
                     @Override
