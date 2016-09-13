@@ -1,6 +1,6 @@
 package com.innovatube.hackernews.ui.base;
 
-public interface BaseViewInterface {
+public interface BaseViewInterface extends MvpView {
     void createProgressDialog();
 
     void createAlertDialog();

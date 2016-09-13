@@ -1,6 +1,6 @@
 package com.innovatube.hackernews.ui.base;
 
-public class BasePresenter<V extends BaseViewInterface> implements BasePresenterInterface<V> {
+public class BasePresenter<V extends MvpView> implements BasePresenterInterface<V> {
 
     private V viewInterface;
 

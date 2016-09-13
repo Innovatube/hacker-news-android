@@ -12,6 +12,7 @@ import com.innovatube.hackernews.data.model.Story;
 import com.innovatube.hackernews.eventbus.RxEventBus;
 import com.innovatube.hackernews.eventbus.event.ItemClickEvent;
 import com.innovatube.hackernews.ui.base.BaseActivity;
+import com.innovatube.hackernews.ui.base.BaseActivityWithDialog;
 import com.innovatube.hackernews.ui.storydetail.StoryDetailActivity;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class TopStoriesActivity extends BaseActivity implements TopStoriesViewInterface,
+public class TopStoriesActivity extends BaseActivityWithDialog implements TopStoriesViewInterface,
         SwipeRefreshLayout.OnRefreshListener {
     StoryAdapter adapter;
 
