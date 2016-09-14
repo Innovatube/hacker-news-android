@@ -11,6 +11,7 @@ import com.innovatube.hackernews.injection.module.ApplicationModule;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import io.realm.Realm;
 import retrofit2.Retrofit;
 
 @Singleton
@@ -27,4 +28,6 @@ public interface ApplicationComponent {
     InnovatubeService inploiService();
 
     DataManager dataManager();
+
+    Realm realm();
 }

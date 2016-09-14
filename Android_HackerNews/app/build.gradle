@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 // For Dagger2
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 24

@@ -3,14 +3,14 @@ package com.innovatube.hackernews.injection.module;
 import android.app.Application;
 import android.content.Context;
 
-import com.innovatube.hackernews.injection.ApplicationContext;
 import com.innovatube.hackernews.data.remote.InnovatubeService;
+import com.innovatube.hackernews.injection.ApplicationContext;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-
+import io.realm.Realm;
 import retrofit2.Retrofit;
 
 @Module
@@ -42,5 +42,12 @@ public class ApplicationModule {
     @Singleton
     Retrofit provideRetrofitInstance() {
         return InnovatubeService.Creator.newRetrofitInstance();
+    }
+
+
+    @Provides
+    @Singleton
+    Realm provideRealm() {
+        return Realm.getDefaultInstance();
     }
 }

@@ -7,6 +7,9 @@ import com.innovatube.hackernews.injection.component.ApplicationComponent;
 import com.innovatube.hackernews.injection.component.DaggerApplicationComponent;
 import com.innovatube.hackernews.injection.module.ApplicationModule;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class InnovatubeApplication extends Application {
     private ApplicationComponent mApplicationComponent;
 
@@ -17,6 +20,10 @@ public class InnovatubeApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
     }
 
     @Override
