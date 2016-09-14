@@ -3,6 +3,7 @@ package com.innovatube.hackernews.injection.module;
 import android.app.Application;
 import android.content.Context;
 
+import com.innovatube.hackernews.data.local.RealmHelper;
 import com.innovatube.hackernews.data.remote.InnovatubeService;
 import com.innovatube.hackernews.injection.ApplicationContext;
 
@@ -49,5 +50,10 @@ public class ApplicationModule {
     @Singleton
     Realm provideRealm() {
         return Realm.getDefaultInstance();
+    }
+
+    @Provides
+    RealmHelper provideRealmHelper() {
+        return new RealmHelper();
     }
 }
