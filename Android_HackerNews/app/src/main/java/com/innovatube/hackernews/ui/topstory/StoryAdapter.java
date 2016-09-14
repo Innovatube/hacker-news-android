@@ -20,7 +20,11 @@ import butterknife.ButterKnife;
 
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryHolder> {
 
-    private ArrayList<Story> storyList = new ArrayList<>();
+    private ArrayList<Story> storyList;
+
+    public StoryAdapter() {
+        storyList = new ArrayList<>();
+    }
 
     @Override
     public StoryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -54,6 +58,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryHolder>
 
     public void setItems(ArrayList<Story> stories) {
         storyList = stories;
+        notifyDataSetChanged();
     }
 
     public class StoryHolder extends RecyclerView.ViewHolder {
@@ -73,7 +78,10 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryHolder>
     public void addItem(Story story) {
         if (!storyList.contains(story)) {
             storyList.add(story);
-            notifyDataSetChanged();
+            notifyItemInserted(storyList.size() - 1);
+        } else {
+            storyList.set(storyList.indexOf(story), story);
+            notifyItemChanged(storyList.indexOf(story));
         }
     }
 }
